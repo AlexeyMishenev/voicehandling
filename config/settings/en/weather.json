@@ -1,0 +1,20 @@
+{
+  "now": "Now in",
+  "on": "on",
+  "forecast": "Weather forecast for",
+  "city": "Saint Petersburg",
+  "time": "Time",
+  "temperature": "Temperature",
+  "cloudiness": "Cloudiness",
+  "wind": "Wind",
+  "humidity": "Humidity",
+  "pressure": "Pressure",
+  "pressure_type": "hPa",
+  "wind_type": "m/sec",
+  "avg": "Avg.",
+  "average": "average",
+  "from": "from",
+  "to": "to",
+  "expected": "expected"
+}
+

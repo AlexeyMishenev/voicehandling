@@ -1,0 +1,9 @@
+-adcin yes
+-cepdir input
+-cepext .wav
+-ctl targets
+-dict ./en-us/cropped-en-us.dict
+-hmm ./en-us/en-us/
+-lm /usr/local/share/pocketsphinx/model/en-us/en-us.lm.bin
+-hyp out.hyp
+-samprate 16000 
