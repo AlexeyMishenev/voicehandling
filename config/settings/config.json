@@ -6,14 +6,5 @@
         "appid": "375b576a73c6bd537cd06690386b9dd4",
         "units": "metric",
         "lang": ""
-    },
-    "weather_print": {
-    	"now": "'{now}', bold_style(Fore.YELLOW, '{city}:'), '{desc}'",
-    	"time": "bold_style(Fore.GREEN,'    {time_title}:'), '{time}'",
-    	"temp": "bold_style(Fore.GREEN,'    {temperature}:'), '{temp}°C'",
-    	"cloud": "bold_style(Fore.GREEN,'    {сloudiness}:'), '{clouds}%'",
-    	"wind": "bold_style(Fore.GREEN,'    {wind}:'), '{speed} {wind_type}'",
-    	"humidity": "bold_style(Fore.GREEN,'    {hum_title}:'), '{humidity}%'",
-    	"pressure": "bold_style(Fore.GREEN,'    {press_title}:'), '{pressure} {pressure_type}'"
     }
 }

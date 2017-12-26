@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-import locale
-import time
 from datetime import datetime, timedelta
+import time
 
 import numpy as np
 import requests
@@ -18,14 +17,13 @@ class Forecast(ModuleTemplate):
     def __init__(self, str_command: str) -> None:
         super().__init__(str_command)
         self.__lang = config.get('lang')
+        self.__now = datetime.fromtimestamp(time.time())
         self.__weather_params = config.get('weather_params')
         self.__WEEKDAYS = json_config.get('weekdays', section='datatime')
         self.__MONTHS = json_config.get('months', section='datatime')
         self.__words = json_config.get_all(section='weather')
         self.__weather_params['lang'] = self.__lang
-        self.__now = datetime.fromtimestamp(time.time())
         self.__spaces = ' ' * 3
-        # locale.setlocale(locale.LC_ALL, 'russian' if self.__lang == 'ru' else 'english')
 
     @cache_func(".cache/forecast", config.get('lang'))
     def __forecast_request(self):
@@ -54,8 +52,10 @@ class Forecast(ModuleTemplate):
             date_end += 1
 
         cur_forecast = cur_forecast[date_start:date_end]
+
         array = {'description': [], 'temperature': [], 'cloudiness': [],
                  'wind_speed': [], 'humidity': [], 'pressure': []}
+
         for cur_weather in cur_forecast:
             array['description'].append(cur_weather['weather'][0]['description'])
             array['temperature'].append(cur_weather["main"]["temp"])
@@ -88,14 +88,10 @@ class Forecast(ModuleTemplate):
                      "{tab}{{bold}}{{fgreen}}{avg} {humidity}{{rst}}: {v$humidity} {percentage}\n" \
                      "{tab}{{bold}}{{fgreen}}{avg} {pressure}{{rst}}: {v$pressure} {pressure_type}\n" \
             .format(**self.__words)
-        if self.__lang == "ru":
-            tts_out = "{forecast} {city} {on} {v$date}. {expected} {description}.{temperature}" \
-                      " {from} {v$mintemperature} {to} {v$maxtemperature}{celsius}" \
-                .format(**self.__words)
-        else:
-            tts_out = "{forecast} {city} {on} {v$date}. {description} {expected}.{temperature}" \
-                      " {from} {v$mintemperature} {to} {v$maxtemperature}{celsius}" \
-                .format(**self.__words)
+        tts_out = "{forecast} {city} {on} {v$date}."
+        tts_out += "{expected} {description}" if self.__lang == "ru" else "{description} {expected}"
+        tts_out += "{temperature} {from} {v$mintemperature} {to} {v$maxtemperature}{celsius}"
+        tts_out = tts_out.format(**self.__words)
         res = {'text': screen_out,
                'voice': tts_out}
         return res

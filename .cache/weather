@@ -1,6 +1,6 @@
 {
-    "time": "2017-12-21",
-    "lang": "ru",
+    "time": "2017-12-26",
+    "lang": "en",
     "data": {
         "coord": {
             "lon": 30.26,
@@ -8,37 +8,36 @@
         },
         "weather": [
             {
-                "id": 620,
-                "main": "Snow",
-                "description": "\u043c\u043e\u043a\u0440\u044b\u0439 \u0441\u043d\u0435\u0433",
-                "icon": "13d"
+                "id": 803,
+                "main": "Clouds",
+                "description": "broken clouds",
+                "icon": "04d"
             }
         ],
         "base": "stations",
         "main": {
-            "temp": -2,
-            "pressure": 1015,
-            "humidity": 92,
-            "temp_min": -2,
-            "temp_max": -2
+            "temp": 2,
+            "pressure": 993,
+            "humidity": 91,
+            "temp_min": 2,
+            "temp_max": 2
         },
-        "visibility": 2500,
+        "visibility": 10000,
         "wind": {
-            "speed": 5,
-            "deg": 180,
-            "gust": 10
+            "speed": 8,
+            "deg": 270
         },
         "clouds": {
-            "all": 90
+            "all": 75
         },
-        "dt": 1513843200,
+        "dt": 1514280600,
         "sys": {
             "type": 1,
             "id": 7267,
-            "message": 0.0032,
+            "message": 0.0035,
             "country": "RU",
-            "sunrise": 1513839605,
-            "sunset": 1513860869
+            "sunrise": 1514271686,
+            "sunset": 1514293095
         },
         "id": 498817,
         "name": "Saint Petersburg",

@@ -19,26 +19,17 @@ def arg_parse():
     return arguments
 
 
-def recognize(home_path: str):
+def recognize(rec_path: str):
     print("Trying to recognition...")
     bashCommand = "pocketsphinx_batch -argfile argsEnB > /dev/null 2>&1"
     os.system(bashCommand)
 
-    with open(os.path.join(home_path, 'out.hyp'), 'r') as myfile:
+    with open(os.path.join(rec_path, 'out.hyp'), 'r') as myfile:
         inputCommand = myfile.read()
 
     print('\nHyp: {}'.format(inputCommand))
 
-    # old version
-    # if '(' not in inputCommand:
-    #     print('Some troubles happened while recognition')
-    #     exit(0)
-
-    # index = inputCommand.index('(')
-    # command = inputCommand[:index - 1]
-
-    # new version with regex
-    match = re.search(r'(?P<command>.*)\s\(input1\s(?P<input1>.*)\)', inputCommand)
+    match = re.search(r'(?P<command>.*)\s\(input1\s(?P<input1>.*)\)', inputCommand    )
 
     if not match:
         print('Some troubles happened while recognition')

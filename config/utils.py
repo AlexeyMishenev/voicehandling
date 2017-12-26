@@ -2,7 +2,6 @@ import json
 import os
 import time
 from datetime import datetime
-from os import mkdir
 from os.path import dirname, exists
 
 
@@ -16,7 +15,7 @@ def cache_func(cache_file, lang):
             now = datetime.fromtimestamp(time.time())
 
             if not exists(dirname(cache_file)):
-                mkdir(dirname(cache_file))
+                os.makedirs(dirname(cache_file), exist_ok=True)
 
             data = None
             if os.path.exists(cache_file):
@@ -38,5 +37,3 @@ def cache_func(cache_file, lang):
         return wrapper
 
     return real_decorator
-
-

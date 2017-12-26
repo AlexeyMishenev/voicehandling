@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-
-import locale
 import time
 from datetime import datetime
-
 import requests
 
 from config.json_config import *
@@ -18,14 +15,13 @@ class Weather(ModuleTemplate):
     def __init__(self, str_command: str) -> None:
         super().__init__(str_command)
         self.__lang = config.get('lang')
+        self.__now = datetime.fromtimestamp(time.time())
         self.__weather_params = config.get('weather_params')
         self.__WEEKDAYS = json_config.get('weekdays', section='datatime')
         self.__MONTHS = json_config.get('months', section='datatime')
         self.__words = json_config.get_all(section='weather')
         self.__weather_params['lang'] = self.__lang
-        self.__now = datetime.fromtimestamp(time.time())
         self.__spaces = ' ' * 3
-        # locale.setlocale(locale.LC_ALL, 'ru_RU.UTF-8' if self.__lang == 'ru' else 'en_US.UTF-8')
 
     @cache_func(".cache/weather", config.get('lang'))
     def __weather_request(self):
